@@ -6,7 +6,15 @@ layout: default
     <img src="/assets/img/avatar.png" class="author" alt="user">
     <div class="info">
       <h4>柏清</h4>
-      <p>全栈工程师,寻找存在感</p>
+      <p>
+        跑偏了的java工程师
+        <br>
+        半桶水的nodejs工程师
+        <br>
+        还可以的前端工程师
+        <br>
+        应该算是一枚全栈工程师
+      </p>
     </div>
   </div>
 
@@ -15,7 +23,7 @@ layout: default
   </h2>
   <ul>
 
-    {% for post in site.posts limit:15  %}
+    {% for post in site.posts limit:5 %}
     <li class="post ">
       <a href="{{post.url}}"><span>{{post.title}}</span>
         <time datetime="{{post.date}}">{{post.date | date_to_string}}</time>
