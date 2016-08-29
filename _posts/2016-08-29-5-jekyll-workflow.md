@@ -15,7 +15,7 @@ title: 使用 flowchart.js 支持 markdown 流程图
 
 <script src="//cdn.bootcss.com/raphael/2.2.0/raphael-min.js"></script>
 <script src="//cdn.bootcss.com/flowchart/1.6.3/flowchart.js"></script>
-<script src="./flow.js"></script>
+<script src="/assets/flow.js"></script>
 
 ```flow
 st=>start: 检测流程

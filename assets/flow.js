@@ -1,10 +1,10 @@
 'use strict';
-$(function() {
+$(function () {
   var flowchart = window.flowchart;
-  var uuid = function() {
+  var uuid = function () {
     return new Date().getTime()
   };
-  $('code.language-flow').each(function(i, n) {
+  $('code.language-flow').each(function (i, n) {
     var codePre = $(n);
     if (codePre.attr('flow-flag') == 'compiled') {
       return
@@ -12,6 +12,7 @@ $(function() {
     var codeText = codePre.text();
     var _uuid = uuid();
     var div = $('<div id="div_' + _uuid + '"></div>');
+    div.css({'overflow-x': 'auto'});
     codePre.parent().before(div);
     codePre.parent().before($('<a class="look-source" id="' + _uuid + '" href="javascript:void(0)">source</a>'));
     codePre.parent().hide();
@@ -59,7 +60,7 @@ $(function() {
       }
     });
   });
-  $('body').on('click.source', 'a.look-source', function() {
+  $('body').on('click.source', 'a.look-source', function () {
     var $this = $(this);
     $this.nextAll('pre').slideToggle();
   })
