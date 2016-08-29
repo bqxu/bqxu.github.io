@@ -1,13 +1,9 @@
 ---
-layout: markdown
-title: 程序员必读之软件架构
+layout: blog
+title:  读《程序员必读之软件架构》
 summary: 读书笔记:程序员必读之软件架构
-permalink: soft/architecture
-private: true
 ---
-# 程序员必读之软件架构
-
-## 续: 架构师真正要学会的事情
+#  读《程序员必读之软件架构》
 
 所谓跨界不是指你能力与方法上的变化，你的作为取决于你的格局，你的格局取决于你的所见。
 

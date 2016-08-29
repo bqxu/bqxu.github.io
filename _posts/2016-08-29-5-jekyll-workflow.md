@@ -1,8 +1,6 @@
 ---
-layout: markdown
-title: markdown 流程图
-summary: 使用 flowchart.js 支持 markdown 流程图
-permalink: soft/jekyll-flow
+layout: blog
+title: 使用 flowchart.js 支持 markdown 流程图
 ---
 
 # markdown 流程图
@@ -13,7 +11,7 @@ permalink: soft/jekyll-flow
 ```
 
 
-## 用户检测结果
+## 例子 用户检测结果
 
 <script src="//cdn.bootcss.com/raphael/2.2.0/raphael-min.js"></script>
 <script src="//cdn.bootcss.com/flowchart/1.6.3/flowchart.js"></script>

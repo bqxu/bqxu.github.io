@@ -42,7 +42,7 @@ unpublished: false
 
 
 # Outputting
-paginate: 10
+paginate: 15
 paginate_path: "blog/page:num"
 timezone:      null
 

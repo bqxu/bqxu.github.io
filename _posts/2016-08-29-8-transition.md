@@ -1,11 +1,13 @@
 ---
-layout: markdown
-title: css3过渡
-summary: css3基础知识transition过渡
-permalink: css3/transition
+layout: blog
+title:  css3基础知识transition过渡
 ---
 
 # css3 过渡
+
+
+* TOC
+{:toc}
 
 <style>
 iframe{
@@ -15,7 +17,7 @@ height: 100px
 }
 </style>
 
-<script src='./iframe.js'></script>
+<script src='/assets/iframe.js'></script>
 
 
  过渡是元素从一种样式逐渐改变为另一种的效果。
@@ -41,7 +43,7 @@ transition-property 属性规定应用过渡效果的 CSS 属性的名称。（�
 
 请始终设置 transition-duration 属性，否则时长为 0，就不会产生过渡效果。
 
-<iframe src='./demo/08'></iframe>
+<iframe src='/assets/demo/08'></iframe>
 
 ## transition-timing-function
 
@@ -53,4 +55,4 @@ ease-out | 规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1
 ease-in-out | 规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。
 cubic-bezier(n,n,n,n) | 在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
 
-<iframe src='./demo/09'></iframe>
+<iframe src='/assets/demo/09'></iframe>

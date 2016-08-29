@@ -1,10 +1,12 @@
 ---
-layout: markdown
+layout: blog
 title: css3 background 新特性实践
 ---
 
 # background
 
+
+* TOC
 {:toc}
 
 ## 属性
