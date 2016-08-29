@@ -15,7 +15,7 @@ layout: default
   </h2>
   <ul>
 
-    {% for post in site.posts %}
+    {% for post in site.posts limit:15  %}
     <li class="post ">
       <a href="{{post.url}}"><span>{{post.title}}</span>
         <time datetime="{{post.date}}">{{post.date | date_to_string}}</time>
