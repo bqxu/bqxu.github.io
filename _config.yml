@@ -9,7 +9,7 @@
 title: bqxu's Tech
 email: bcaring@163.com
 baseurl: "/" # the subpath of your site, e.g. /blog
-url: "http://bqxu.github.io" # the base hostname & protocol for your site
+url: "http://bqxu.me" # the base hostname & protocol for your site
 github_username:  bqxu
 
 # Build settings
