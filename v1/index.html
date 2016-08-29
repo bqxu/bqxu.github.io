@@ -1,0 +1,192 @@
+---
+---
+<meta name="baidu-site-verification" content="DaStkLU9kk"/>
+<link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+<link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+<style>
+  .btn.active {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .main-content h3 {
+    cursor: pointer;
+  }
+
+  .icon--github svg {
+    width: 32px;
+    height: 32px;
+  }
+</style>
+
+<section class="page-header">
+
+  <h1 class="project-name" onclick="toGit()" style="cursor: pointer">
+    {% include default_v1/icon-github.html %} bqxu</h1>
+  <h2 class="project-tagline" onclick="toSite()" style="cursor: pointer">bqxu.github.com
+    <a href="/feed.xml" rel="alternate">
+      RSS
+    </a>
+  </h2>
+  {% for col in site.collections %}
+  {% if col.label != 'posts'%}
+  <a class="btn">{{col.name}}</a>
+  {% endif %}
+  {% endfor %}
+  <a class="btn">about me</a>
+</section>
+
+<section class="main-content">
+  {% for col in site.collections %}
+
+  {% if col.label != 'posts' %}
+  <div style="display: none">
+    <div>
+      {% for model in site[col.label] %}
+      {% if model.private != true %}
+      <h3 data-url="{{model.url}}">
+        {{model.title}}
+      </h3>
+      <p>
+        {{model.summary}}
+      </p>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+
+  <div style="display: none">
+    <h3>
+      前端技能
+    </h3>
+    <p>
+      精通HTML，书写语义合理，结构清晰，易维护的HTML结构。
+    </p>
+    <p>
+      精通CSS，能够还原视觉设计，熟练使用bootstarp，amaze ui，进行响应式页面布局。
+    </p>
+    <p>
+      精通 JavaScript,JQuery、agularjs、vuejs框架。
+    </p>
+    <p>
+      对常见的浏览器兼容问题有清晰的理解，并有可靠的解决方案。
+    </p>
+    <p>
+      熟练使用less,scss 预处理css
+    </p>
+    <p>
+      熟练使用webpack,grunt,gulp做项目工程化
+    </p>
+    <p>
+      精通 JavaScript 插件开发
+    </p>
+
+    <h3>
+      java
+    </h3>
+    <p>
+      精通jsp，servlet，java bean，JMS，Jdbc开发，
+    </p>
+    <p>
+      熟悉如Velocity，Spring，Hibernate，iBatis等，对Web开发的模式有较深的理解。
+    </p>
+    <p>
+      熟练使用oracle、mysql等常用的数据库系统，对数据库有较强的设计能力。
+    </p>
+    <p>
+      熟悉maven项目配置管理工具
+    </p>
+    <p>
+      熟悉网络编程，具有设计和开发对外API接口经验和能力，同时具备跨平台的API规范设计以及API高效调用设计能力。
+    </p>
+
+    <h3>
+      nodeJs
+    </h3>
+    <p>
+      JavaScript 基本概念清晰，熟练掌握闭包、事件、回调、Promise 等
+    </p>
+    <p>
+      熟练掌握NodeJS核心模块的和常用模块 (如 Express 等) 的使用
+    </p>
+    <p>
+      熟悉Node.js及其相关工具链和开源生态
+    </p>
+    <p>
+      熟练使用pm2在Linux操作系统下的部署、生产环境管理；
+    </p>
+  </div>
+</section>
+<script src="//cdn.bootcss.com/jquery/2.2.0/jquery.js"></script>
+<script>
+  var clickBtn = function () {
+    var $this = $(this);
+    var index = $(".btn", ".page-header").index($this);
+    $(".btn", ".page-header").removeClass("active");
+    $this.addClass("active");
+    $(">div", ".main-content").hide();
+    $(">div", ".main-content").eq(index).show();
+    window.location.hash = '#!' + index;
+  };
+
+  var clickH3 = function () {
+    var $this = $(this);
+    if ($this.attr("data-url")) {
+      window.location.href = $this.attr("data-url");
+    }
+  };
+
+  var toSite = function () {
+    window.location.href = "/"
+  };
+
+  var toGit = function () {
+    window.location.href = "http://github.com/bqxu"
+  };
+
+  $(".page-header").on("click.btn", ".btn", clickBtn);
+  $(".main-content").on("click.h3", "h3", clickH3);
+
+  $(function () {
+    hashChange();
+    window.onhashchange = hashChange;
+  });
+
+  var hashChange = function () {
+    var hash = window.location.hash;
+    var index = 6;
+    if (hash.substring(0, 2) == "#!") {
+      index = hash.substring(2, 3);
+    }
+    clickBtn.bind($(".btn", ".page-header").eq(index))();
+  }
+</script>
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?7120378e7f75441b18a49acd0e969d19";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<script>
+  (function () {
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+      bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+      bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+

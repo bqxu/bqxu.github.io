@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+{% include blog/head.html %}
+<body>
+<div class="book with-summary">
+
+  <div class="book-summary">
+    <nav role="navigation" id="header-title">
+
+    </nav>
+  </div>
+  <div class="book-body">
+    <div class="body-inner">
+      {% include blog/header.html %}
+      <div class="page-wrapper">
+        <div class="page-inner">
+          <section class="normal markdown-section">
+            {{ content }}
+          </section>
+        </div>
+      </div>
+      {% include default/footer.html %}
+    </div>
+  </div>
+</div>
+<script>
+  $(function () {
+    if ($("#markdown-toc").length) {
+      var $title = $("#markdown-toc").clone();
+      $('>li>ul', $title).remove();
+      var $body = $("> li >ul >li", $("#markdown-toc"));
+      $title.append($('<li class="divider"></li>'));
+      $title.append($body);
+      $title.addClass("summary");
+      $('li', $title).addClass("chapter");
+      $('ul', $title).addClass("articles");
+      $("#header-title").append($title);
+    } else {
+      $('body >div').removeClass('with-summary')
+      $('.fa-align-justify', '#header-blog').parent().remove()
+    }
+    $(".markdown-body a").each(function (i, n) {
+      var $this = $(n);
+      if ($this.attr("href")) {
+        var href = $this.attr("href");
+        if (href.indexOf("://") > -1) {
+          $this.attr("target", "_blank");
+        }
+      }
+    });
+    var fixHeight = function () {
+    };
+    $(window).on("resize", function () {
+      fixHeight();
+    });
+    fixHeight();
+  })
+</script>
+</body>
+</html>

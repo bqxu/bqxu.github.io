@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+{% include default_v1/head.html %}
+<body>
+{% include default_v1/header.html %}
+<div class="page-content">
+  <div class="wrapper">
+    {{ content }}
+  </div>
+</div>
+{% include default_v1/footer.html %}
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?7120378e7f75441b18a49acd0e969d19";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+</body>
+</html>

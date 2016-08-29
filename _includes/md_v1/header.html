@@ -1,0 +1,36 @@
+<header class="markdown-header" style="display: none">
+  <nav class="wrapper">
+    <div class="site-module">
+      <ul class="u-w">
+        {% for collection in site.collections %}
+        {% if collection.label != 'posts' %}
+        {% if collection.label != 'IRepo' %}
+        {% if collection.label != page.collection %}
+        <li class="l-1">
+          {% else %}
+        <li class="l-1 active">
+          {% endif %}
+          <a>{{collection.label}}</a>
+          <div class="module-page">
+            <ul class="u-i clear-fix">
+              {% for model in site[collection.label] %}
+              <li class="l-2">
+                <a href="{{model.url}}">{{model.title}}</a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="site-art">
+      {% include default/icon-github.html %} <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+    </div>
+  </nav>
+</header>
+<script>
+
+</script>

@@ -1,0 +1,33 @@
+.book-summary {
+  li.chapter:not(.divider) {
+    min-height: 36px;
+    a {
+      min-height: 16px;
+      line-height: 1;
+    }
+  }
+}
+
+
+
+.book.color-theme-2 .book-header .btn {
+  background: transparent;
+  border: none;
+}
+
+
+.book.color-theme-1 .book-header .btn {
+  background: transparent;
+  border: none;
+}
+
+
+footer{
+  text-align: center;
+  margin: 10px;
+}
+
+
+.page-inner{
+  min-height: calc(100vh - 90px);
+}

@@ -1,0 +1,172 @@
+---
+layout: markdown
+title: css3基础知识
+summary: css3基础知识边框、文本效果、转换
+permalink: css3/base
+---
+
+# css3 边框、文本效果、转换
+
+<style>
+iframe{
+border: none;
+width: 100%;
+height: 100px
+}
+</style>
+
+<script src='./iframe.js'></script>
+
+### 圆角边框
+
+语法:
+
+```
+  border-radius: 1-4 length|% / 1-4 length|%;
+```
+
+<iframe src='./demo/01'></iframe>
+
+### 边框阴影
+
+语法:
+
+
+```
+  box-shadow: h-shadow v-shadow blur spread color inset;
+```
+
+值 | 	描述
+h-shadow  | 必需。水平阴影的位置。允许负值。
+v-shadow  | 必需。垂直阴影的位置。允许负值。
+blur  | 可选。模糊距离。
+spread  |	可选。阴影的尺寸。
+color |	可选。阴影的颜色。请参阅 CSS 颜色值。
+inset |	可选。将外部阴影 (outset) 改为内部阴影。
+
+<iframe src='./demo/02'></iframe>
+
+### 边框图片
+
+border-image 属性是一个简写属性，用于设置以下属性：
+
+* border-image-source
+* border-image-slice
+* border-image-width
+* border-image-outset
+* border-image-repeat
+
+值 | 描述
+border-image-source | 用在边框的图片的路径。
+border-image-slice  | 图片边框向内偏移。
+border-image-width  | 图片边框的宽度。
+border-image-outset | 边框图像区域超出边框的量。
+border-image-repeat | 图像边框是否应平铺(repeated)、铺满(rounded)或拉伸(stretched)。
+
+## 文本效果
+
+### 文本阴影
+
+语法:
+
+```
+text-shadow: h-shadow v-shadow blur color;
+```
+
+值 | 描述
+h-shadow | 必需。水平阴影的位置。允许负值。
+v-shadow | 必需。垂直阴影的位置。允许负值。
+blur | 可选。模糊的距离。
+color | 可选。阴影的颜色。参阅 CSS 颜色值。
+
+<iframe src='./demo/03'></iframe>
+
+## 2D 转换
+
+### transform
+Internet Explorer 10、Firefox 以及 Opera 支持 transform 属性。
+
+Chrome 和 Safari 需要前缀 -webkit-。
+
+Internet Explorer 9 需要前缀 -ms-
+
+### translate
+
+元素从其当前位置移动，根据给定的 left（x 坐标） 和 top（y 坐标） 位置参数：
+
+<iframe src='./demo/04'></iframe>
+
+### rotate
+
+元素顺时针旋转给定的角度。允许负值，元素将逆时针旋转。
+
+
+<iframe src='./demo/05'></iframe>
+
+
+### scale
+
+元素的尺寸会增加或减少，根据给定的宽度（X 轴）和高度（Y 轴）参数：
+
+<iframe src='./demo/06'></iframe>
+
+
+### skew
+
+元素翻转给定的角度，根据给定的水平线（X 轴）和垂直线（Y 轴）参数：
+
+<iframe src='./demo/07'></iframe>
+
+
+### matrix
+
+matrix() 方法把所有 2D 转换方法组合在一起。
+
+matrix() 方法需要六个参数，包含数学函数，允许您：旋转、缩放、移动以及倾斜元素。
+
+
+### Transform 方法
+
+函数  | 描述
+matrix(n,n,n,n,n,n)  | 定义 2D 转换，使用六个值的矩阵。
+translate(x,y)  | 定义 2D 转换，沿着 X 和 Y 轴移动元素。
+translateX(n)  | 定义 2D 转换，沿着 X 轴移动元素。
+translateY(n)  | 定义 2D 转换，沿着 Y 轴移动元素。
+scale(x,y)  | 定义 2D 缩放转换，改变元素的宽度和高度。
+scaleX(n)  | 定义 2D 缩放转换，改变元素的宽度。
+scaleY(n)  | 定义 2D 缩放转换，改变元素的高度。
+rotate(angle)  | 定义 2D 旋转，在参数中规定角度。
+skew(x-angle,y-angle)  | 定义 2D 倾斜转换，沿着 X 和 Y 轴。
+skewX(angle)  | 定义 2D 倾斜转换，沿着 X 轴。
+skewY(angle)  | 定义 2D 倾斜转换，沿着 Y 轴。
+
+## 3D 转换
+
+### 转换属性
+
+属性  | 描述
+transform  | 向元素应用 2D 或 3D 转换。
+transform-origin  | 允许你改变被转换元素的位置。
+transform-style  | 规定被嵌套元素如何在 3D 空间中显示。
+perspective  | 规定 3D 元素的透视效果。
+perspective-origin  | 规定 3D 元素的底部位置。
+backface-visibility  | 定义元素在不面对屏幕时是否可见。
+
+### Transform 方法
+
+函数  | 描述
+matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)  | 定义 3D 转换，使用 16 个值的 4x4 矩阵。
+translate3d(x,y,z)  | 定义 3D 转化。
+translateX(x)  | 定义 3D 转化，仅使用用于 X 轴的值。
+translateY(y)  | 定义 3D 转化，仅使用用于 Y 轴的值。
+translateZ(z)  | 定义 3D 转化，仅使用用于 Z 轴的值。
+scale3d(x,y,z)  | 定义 3D 缩放转换。
+scaleX(x)  | 定义 3D 缩放转换，通过给定一个 X 轴的值。
+scaleY(y)  | 定义 3D 缩放转换，通过给定一个 Y 轴的值。
+scaleZ(z)  | 定义 3D 缩放转换，通过给定一个 Z 轴的值。
+rotate3d(x,y,z,angle)  | 定义 3D 旋转。
+rotateX(angle)  | 定义沿 X 轴的 3D 旋转。
+rotateY(angle)  | 定义沿 Y 轴的 3D 旋转。
+rotateZ(angle)  | 定义沿 Z 轴的 3D 旋转。
+perspective(n)  | 定义 3D 转换元素的透视视图。
+

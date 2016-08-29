@@ -1,0 +1,144 @@
+<div class="book-header" role="navigation" id="header-blog">
+  <a class="btn pull-left js-toolbar-action" href="javascript:void(0)"
+  >
+    <i class="fa fa-align-justify"></i>
+  </a>
+  <div class="dropdown pull-left font-settings js-toolbar-action">
+    <a class="btn toggle-dropdown"
+       href="javascript:void(0)">
+      <i class="fa fa-font"></i>
+    </a>
+    <div class="dropdown-menu dropdown-right">
+      <div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div>
+      <div class="buttons">
+        <button class="button size-2 font-reduce">A</button>
+        <button class="button size-2 font-enlarge">A</button>
+      </div>
+      <div class="buttons">
+        <button class="button size-2 font-family-0">Serif</button>
+        <button class="button size-2 font-family-1">Sans</button>
+      </div>
+      <div class="buttons">
+        <button class="button size-3 color-theme-0">White</button>
+        <button class="button size-3 color-theme-1">Sepia</button>
+        <button class="button size-3 color-theme-2">Night</button>
+      </div>
+    </div>
+  </div>
+  <a class="btn pull-right lang-switcher active js-toolbar-action" aria-label="" href="/">bqxu.github.io</a>
+  <h1>
+    <i class="fa fa-circle-o-notch fa-spin"></i>
+    <a href="javascript:void(0)" id="header-title">{{page.title}}</a>
+  </h1>
+</div>
+
+<script>
+
+  $(function () {
+    var $header = $('#header-blog');
+    $('.fa-align-justify', $header).parent().on('click', function () {
+      $('body >div').toggleClass('with-summary')
+    });
+    $('.fa-columns', $header).on('click', function () {
+      $('body >div').toggleClass('two-columns')
+    });
+    $('.toggle-dropdown', $header).on('click', function () {
+      $('.dropdown-menu', $header).toggleClass('open')
+    });
+    $('.font-reduce', $header).on('click', function () {
+      var className = $('body >div').attr("class")
+
+      if (className.indexOf('font-size-') > -1) {
+        var classArr = className.split(' ');
+        for (var i = 0; i < classArr.length; i++) {
+          var classN = classArr[i];
+          if (classN.indexOf('font-size-') > -1) {
+            var fs = classN.substring(classN.length - 1);
+            fs = parseInt(fs || 0);
+            if (fs > 0) {
+              fs--;
+            }
+            $('body >div').removeClass(classN);
+            if (fs < 0) {
+              fs = 0;
+            }
+            $('body >div').addClass('font-size-' + fs);
+            localStorage.setItem('font-size', 'font-size-' + fs);
+            break;
+          }
+        }
+      }
+    });
+    $('.font-enlarge', $header).on('click', function () {
+      var className = $('body >div').attr("class");
+
+      if (className.indexOf('font-size-') > -1) {
+        var classArr = className.split(' ');
+        for (var i = 0; i < classArr.length; i++) {
+          var classN = classArr[i];
+          if (classN.indexOf('font-size-') > -1) {
+            var fs = classN.substring(classN.length - 1);
+            fs = parseInt(fs || 0);
+            if (fs < 4) {
+              fs++;
+            }
+            $('body >div').removeClass(classN);
+            if (fs > 4) {
+              fs = 4;
+            }
+            $('body >div').addClass('font-size-' + fs);
+            localStorage.setItem('font-size', 'font-size-' + fs);
+            break;
+          }
+        }
+      }
+    });
+    $('.font-family-0', $header).on('click', function () {
+      if (!$('body >div').hasClass("font-family-0")) {
+        $('body >div').removeClass("font-family-1");
+        $('body >div').addClass("font-family-0");
+      }
+      localStorage.setItem('font-family', "font-family-0");
+    });
+    $('.font-family-1', $header).on('click', function () {
+      if (!$('body >div').hasClass("font-family-1")) {
+        $('body >div').removeClass("font-family-0");
+        $('body >div').addClass("font-family-1");
+      }
+      localStorage.setItem('font-family', "font-family-1");
+    });
+    $('.color-theme-0', $header).on('click', function () {
+      if ($('body >div').hasClass("color-theme-1") || $('body >div').hasClass("color-theme-2")) {
+        $('body >div').removeClass("color-theme-1").removeClass("color-theme-2");
+      }
+      localStorage.setItem('color-theme', "");
+    });
+    $('.color-theme-1', $header).on('click', function () {
+      if (!$('body >div').hasClass("color-theme-1")) {
+        $('body >div').removeClass("color-theme-2");
+        $('body >div').addClass("color-theme-1");
+      }
+      localStorage.setItem('color-theme', "color-theme-1");
+    });
+    $('.color-theme-2', $header).on('click', function () {
+      if (!$('body >div').hasClass("color-theme-2")) {
+        $('body >div').removeClass("color-theme-1")
+        $('body >div').addClass("color-theme-2");
+      }
+      localStorage.setItem('color-theme', "color-theme-2");
+    });
+
+    if (localStorage.getItem('color-theme')) {
+      $('body >div').addClass(localStorage.getItem('color-theme'));
+    }
+    if (localStorage.getItem('font-family')) {
+      $('body >div').addClass(localStorage.getItem('font-family'));
+    }
+    if (localStorage.getItem('font-size')) {
+      $('body >div').addClass(localStorage.getItem('font-size'));
+    }else{
+      $('body >div').addClass('font-size-1');
+    }
+  })
+
+</script>

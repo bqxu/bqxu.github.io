@@ -1,0 +1,133 @@
+<style>
+  div {
+    width: 20vw;
+    height: 20vh;
+    background: red;
+    position: relative;
+    animation: myfirst 5s linear 1s infinite alternate;
+    /* Firefox: */
+    -moz-animation: myfirst 5s linear 1s infinite alternate;
+    /* Safari and Chrome: */
+    -webkit-animation: myfirst 5s linear 1s infinite alternate;
+    /* Opera: */
+    -o-animation: myfirst 5s linear 1s infinite alternate;
+  }
+
+  @keyframes myfirst {
+    0% {
+      background: red;
+      left: 0;
+      top: 0;
+    }
+    25% {
+      background: yellow;
+      left: 60vw;
+      top: 0;
+    }
+    50% {
+      background: blue;
+      left: 60vw;
+      top: 60vh;
+    }
+    75% {
+      background: green;
+      left: 0;
+      top: 60vh;
+    }
+    100% {
+      background: red;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  @-moz-keyframes myfirst /* Firefox */
+  {
+    0% {
+      background: red;
+      left: 0;
+      top: 0;
+    }
+    25% {
+      background: yellow;
+      left: 60vw;
+      top: 0;
+    }
+    50% {
+      background: blue;
+      left: 60vw;
+      top: 60vh;
+    }
+    75% {
+      background: green;
+      left: 0;
+      top: 60vh;
+    }
+    100% {
+      background: red;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  @-webkit-keyframes myfirst /* Safari and Chrome */
+  {
+    0% {
+      background: red;
+      left: 0;
+      top: 0;
+    }
+    25% {
+      background: yellow;
+      left: 60vw;
+      top: 0;
+    }
+    50% {
+      background: blue;
+      left: 60vw;
+      top: 60vh;
+    }
+    75% {
+      background: green;
+      left: 0;
+      top: 60vh;
+    }
+    100% {
+      background: red;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  @-o-keyframes myfirst /* Opera */
+  {
+    0% {
+      background: red;
+      left: 0;
+      top: 0;
+    }
+    25% {
+      background: yellow;
+      left: 60vw;
+      top: 0;
+    }
+    50% {
+      background: blue;
+      left: 60vw;
+      top: 60vh;
+    }
+    75% {
+      background: green;
+      left: 0;
+      top: 60vh;
+    }
+    100% {
+      background: red;
+      left: 0;
+      top: 0;
+    }
+  }
+</style>
+
+
+<div></div>

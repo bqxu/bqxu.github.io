@@ -1,0 +1,555 @@
+---
+layout: markdown
+title: web前端－Javascript大杂烩
+summary: 本文旨在对web前端，涉及到的javascript相关知识进行一个广而泛的普及。
+permalink: javascript/web
+---
+
+# web前端－Javascript大杂烩 [bqxu](http://github.com/bqxu)
+	我只是文字的搬运工
+
+本文旨在对web前端，涉及到的javascript相关知识进行一个广而泛的普及。
+
+[TOC]
+
+* TOC
+{:toc}
+
+## 基本概念
+
+### JSON(JavaScript Object Notation)
+JSON是一种轻量级的数据交换格式。它基于ECMAScript的一个子集。 JSON采用完全独立于语言的文本格式。
+
+json简单说就是javascript中的对象和数组，所以这两种结构就是对象和数组两种结构，通过这两种结构可以表示各种复杂的结构
+
+1. 对象：对象在js中表示为“{}”括起来的内容，数据结构为 {key：value,key：value,...}的键值对的结构，在面向对象的语言中，key为对象的属性，value为对应的属性值，所以很容易理解，取值方法为 对象.key 获取属性值，这个属性值的类型可以是 数字、字符串、数组、对象几种。
+
+2. 数组：数组在js中是中括号“[]”括起来的内容，数据结构为 ["java","javascript","vb",...]，取值方式和所有语言中一样，使用索引获取，字段值的类型可以是 数字、字符串、数组、对象几种。
+
+经过对象、数组2种结构就可以组合成复杂的数据结构了。
+
+### AJAX = 异步 JavaScript和XML
+
+AJAX 是一种用于创建快速动态网页的技术。
+通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。
+传统的网页（不使用 AJAX）如果需要更新内容，必须重载整个网页页面。
+
+### HTTP 超文本传输协议[#](http://baike.baidu.com/view/9472.htm)
+HTTP是一个客户端和服务器端请求和应答的标准（TCP）
+
+#### 请求消息
+
+```
+典型的请求消息：
+	Host: download.*******.de
+	Accept: */*
+	Pragma: no-cache
+	Cache-Control: no-cache
+	User-Agent: Mozilla/4.04[en](Win95;I;Nav)
+	Range: bytes=554554-
+```
+
+* 请求头域可能包含下列字段Accept、Accept-Charset、Accept-Encoding、Accept-Language、Authorization、From、Host、If-Modified-Since、If-Match、If-None-Match、If-Range、If-Range、If-Unmodified-Since、Max-Forwards、Proxy-Authorization、Range、Referer、User-Agent。对请求头域的扩展要求通讯双方都支持，如果存在不支持的请求头域，一般将会作为实体头域处理。
+* 请求消息的第一行为下面的格式：MethodSPRequest-URISPHTTP-VersionCRLF
+	* Method表示对于Request-URI完成的方法，这个字段是大小写敏感的，包括OPTIONS、GET、HEAD、POST、PUT、DELETE、TRACE。方法GET和HEAD应该被所有的通用WEB服务器支持，其他所有方法的实现是可选的。
+	* SP表示空格。
+	* Request-URI遵循URI格式，在此字段为星号（*）时，说明请求并不用于某个特定的资源地址，而是用于服务器本身。
+	* HTTP-Version表示支持的HTTP版本，例如为HTTP/1.1。CRLF表示换行回车符。请求头域允许客户端向服务器传递关于请求或者关于客户机的附加信息。
+
+* Host头域 指定请求资源的Intenet主机和端口号，必须表示请求url的原始服务器或网关的位置。HTTP/1.1请求必须包含主机头域，否则系统会以400状态码返回。
+* Referer头域允许客户端指定请求uri的源资源地址，这可以允许服务器生成回退链表，可用来登陆、优化cache等。他也允许废除的或错误的连接由于维护的目的被追踪。如果请求的uri没有自己的uri地址，Referer不能被发送。如果指定的是部分uri地址，则此地址应该是一个相对地址。
+* 	Range头域可以请求实体的一个或者多个子范围。例如，
+	表示头500个字节：bytes=0-499
+	表示第二个500字节：bytes=500-999
+	表示最后500个字节：bytes=-500
+	表示500字节以后的范围：bytes=500-
+	第一个和最后一个字节：bytes=0-0,-1
+	同时指定几个范围：bytes=500-600,601-999
+	但是服务器可以忽略此请求头，如果无条件GET包含Range请求头，响应会以状态206（PartialContent）返回而不是以200（OK）。
+* User-Agent头域的内容包含发出请求的用户信息。
+
+* Cache-Control指定请求和响应遵循的缓存机制。在请求消息或响应消息中设置Cache-Control并不会修改另一个消息处理过程中的缓存处理过程。请求时的缓存指令包括no-cache、no-store、max-age、max-stale、min-fresh、only-if-cached，响应消息中的指令包括public、private、no-cache、no-store、no-transform、must-revalidate、proxy-revalidate、max-age。
+* Keep-Alive功能使客户端到服务器端的连接持续有效，当出现对服务器的后继请求时，Keep-Alive功能避免了建立或者重新建立连接。对于提供静态内容的网站来说，这个功能通常很有用。但是，对于负担较重的网站来说，这里存在另外一个问题：虽然为客户保留打开的连接有一定的好处，但它同样影响了性能，Keep- Alive功能对资源利用的影响尤其突出。
+* Date头域表示消息发送的时间，时间的描述格式由rfc822定义。例如，Date:Mon,31Dec200104:25:57GMT。Date描述的时间表示世界标准时，换算成本地时间，需要知道用户所在的时区。
+* Pragma头域用来包含实现特定的指令，最常用的是Pragma:no-cache。在HTTP/1.1协议中，它的含义和Cache-Control:no-cache相同。
+
+#### 响应消息
+
+```
+典型的响应消息：
+	HTTP/1.0200OK
+	Date:Mon,31Dec200104:25:57GMT
+	Server:Apache/1.3.14(Unix)
+	Content-type:text/html
+	Last-modified:Tue,17Apr200106:46:28GMT
+	Etag:"a030f020ac7c01:1e9f"
+	Content-length:39725426
+	Content-range:bytes55******/40279980
+```
+
+* 响应消息的第一行为下面的格式：HTTP-VersionSPStatus-CodeSPReason-PhraseCRLF
+* HTTP-Version表示支持的HTTP版本，例如为HTTP/1.1。
+* Status-Code是一个三个数字的结果代码。
+* Reason-Phrase给Status-Code提供一个简单的文本描述。
+* Status-Code主要用于机器自动识别，
+* Reason-Phrase主要用于帮助用户理解。
+* Status-Code的第一个数字定义响应的类别，后两个数字没有分类的作用。第一个数字可能取5个不同的值：
+	* 1xx:信息响应类，表示接收到请求并且继续处理
+	* 2xx:处理成功响应类，表示动作被成功接收、理解和接受
+	* 3xx:重定向响应类，为了完成指定的动作，必须接受进一步处理
+	* 4xx:客户端错误，客户请求包含语法错误或者是不能正确执行
+	* 5xx:服务端错误，服务器不能正确执行一个正确的请求
+
+* Location响应头用于重定向接收者到一个新URI地址。
+* Server响应头包含处理请求的原始服务器的软件信息。
+
+#### 实体信息
+
+* 请求消息和响应消息都可以包含实体信息，实体信息一般由实体头域和实体组成。
+* Content-Type实体头用于向接收方指示实体的介质类型，指定HEAD方法送到接收方的实体介质类型，或GET方法发送的请求介质类型
+* Content-Range实体头用于指定整个实体中的一部分的插入位置，他也指示了整个实体的长度。在服务器向客户返回一个部分响应，它必须描述响应覆盖的范围和整个实体长度。
+  一般格式：Content-Range:bytes-unitSPfirst-byte-pos-last-byte-pos/entity-legth
+  例如，传送头500个字节次字段的形式：Content-Range:bytes0-499/1234
+
+* Last-modified实体头指定服务器上保存内容的最后修订时间。
+
+### HTTP 服务器
+
+#### Apache
+世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。它快速、可靠并且可通过简单的API扩展，将Perl/Python等解释器编译到服务器中。
+
+#### Nginx[#](http://www.nginx.cn/doc/index.html)
+一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器
+
+### nodeJS HTTP 服务器
+
+#### express[#](http://www.expressjs.com.cn/)
+一个基于 Node.js 平台的极简、灵活的 web 应用开发框架，它提供一系列强大的特性，帮助你创建各种 Web 和移动设备应用。
+
+#### LoopBack[#](https://docs.strongloop.com/display/zh/LoopBack)
+一个可扩展的开源Node.js 框架。基于express之上。
+它可以让我们:
+
+* 无需写任何代码(或少量的代码)来创建REST API
+* 访问任意数据库中的数据甚至是外部的REST API
+* 可以在API上定义关系型数据模型和访问限制(ACL)
+* 在移动APP中使用地理位置，文件访问和推送消息
+* 提供Android, iOS 和 JavaScript SDKs快速创建有数据支持的应用程序
+* 方便的应用部署，无论在云上还是自己的服务器
+
+#### http-server[#](https://github.com/indexzero/http-server)
+一个基于nodejs简单的零配置命令行 http 服务器。
+
+```bash
+npm install http-server -g
+http-server [path] [options]
+```
+
+### nodejs
+一个基于 Chrome V8 引擎的 JavaScript 运行环境。Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。
+
+#### npm
+Node.js 的包管理器，是全球最大的开源库生态系统。
+
+* 允许用户从NPM服务器下载别人编写的第三方包到本地使用。
+* 允许用户从NPM服务器下载并安装别人编写的命令行程序到本地使用。
+* 允许用户将自己编写的包或命令行程序上传到NPM服务器供别人使用。
+
+#### module 模块
+* 核心模块[#](https://nodejs.org/dist/latest-v5.x/docs/api/)
+
+	这些核心模块被编译成二进制文件，可以require('模块名')去获取；
+	核心模块具有最高的加载优先级（有模块与核心模块同名时会体现）
+
+* 文件模块
+
+	访问方式通过require('/文件名.后缀'); require('./文件名.后缀'); requrie('../文件名.后缀') 去访问，文件后缀可以省略；以"/"开头是以绝对路径去加载，以"./"开头和以"../"开头表示以相对路径加载，而以"./"开头表示同级目录下文件，
+
+* node_modules
+
+	如果require()中的模块名不是一个本地模块，也没有以'/', '../', 或是 './'开头，那么node会从当前模块的父目录开始，尝试在它的/node_modules文件夹里加载相应模块。
+
+***
+
+## 基本使用
+
+### dom
+获取操作html节点（Element）属性（prototype）样式（style）
+
+native:
+
+```js
+var div=document.createElement('div');  //创建div
+var p=document.createElement('p');  //创建div
+div.id='inativediv';修改属性id
+div.innerHtml="div"
+div.style.background='red';修改样式背景色
+div.style.width="100px";设置宽度
+div.style.height="100px";设置高度
+//get
+document.getElementById('inativediv');
+```
+
+[jQuery](http://api.jquery.com/jQuery/#jQuery1):
+
+```js
+var div=$("<div id='ijQuerydiv'></div>");
+div.css({width:"200px",height:"200px"});
+//get
+$("#dijQuerydiv")
+```
+
+### 运算
+进行数据校验，逻辑判断等
+
+```js
+var outData=[];
+var jsonData=[{id:0,name:'n0'},{id:1,name:'n1'}];
+for(var i=0;i<jsonData.length;i++){
+	var jData=jsonData[i];
+	if(jData.id=0){
+		outData.push(jData.name);
+	}
+}
+```
+
+### request
+与服务器端交互，ajax，websocket
+
+native:
+
+```js
+var xmlhttp;
+if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera,Safari
+	xmlhttp=new XMLHttpRequest();
+}else{// code for IE6, IE5
+	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+xmlhttp.onreadystatechange=function(){
+	if (xmlhttp.readyState==4 && xmlhttp.status==200){
+		document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+	}
+}
+xmlhttp.open("GET","http://www.baidu.com",true);
+xmlhttp.send();
+```
+jQuery[#](http://api.jquery.com/jQuery.ajax/):
+
+```js
+$.ajax({
+	url:"http://www.baidu.com",
+	success:function(resData){
+
+	}
+})
+```
+
+### 交互
+捕获事件，页面响应
+native:
+
+```js
+var div=document.getElementById('inativediv');
+div.onClick=function(){
+  alert("click")
+}
+
+div.onchange
+div.onfocus
+```
+
+jquery[#](http://api.jquery.com/category/events/)
+
+* 操作浏览器行为
+
+```js
+var w=window.innerWidth
+|| document.documentElement.clientWidth
+|| document.body.clientWidth;
+var h=window.innerHeight
+|| document.documentElement.clientHeight
+|| document.body.clientHeight;
+
+window.open() // 打开新窗口
+window.close() // 关闭当前窗口
+window.moveTo() // 移动当前窗口
+window.resizeTo() // 调整当前窗口的尺寸
+
+alert
+confirm
+prompt
+
+window.navigator
+Window.history
+window.location
+window.screen
+
+document.cookie
+```
+
+***
+
+## 进阶使用
+
+### 闭包[#](http://www.cnblogs.com/xiaotie/archive/2011/08/03/2126145.html)(Closure)
+指有权访问另外一个函数作用域中的变量的函数。
+创建闭包的常见方式就是在一个函数内部创建另外一个函数。
+在javascript中没有块级作用域，一般为了给某个函数申明一些只有该函数才能使用的局部变量时，我们就会用到闭包，这样我们可以很大程度上减少全局作用域中的变量，净化全局作用域。
+使用闭包有好处，也有坏处，滥用闭包会造成内存的大量消耗。
+
+* 闭包是一种设计原则，它通过分析上下文，来简化用户的调用，让用户在不知晓的情况下，达到他的目的；
+* 网上主流的对闭包剖析的文章实际上是和闭包原则反向而驰的，如果需要知道闭包细节才能用好的话，这个闭包是设计失败的；
+* 尽量少学习。
+
+### 类库
+不依赖其他类库，能基于其上进行组件开发,例如
+[jquery](http://jquery.com/)
+[Yahoo! UI Library (YUI)](http://developer.yahoo.com/yui/)
+[Prototype](http://prototypejs.org/)
+[extjs](http://extjs.org.cn/)
+
+### UI组件
+每个组件由模板（hbs）、样式（LESS）、脚本（JS）三部分组成。
+脚本处理大致包含以下内容
+
+* target 绑定对象、作用域
+* options 主动传入、自行捕获参数
+* data 数据处理，对数据继续加工
+* render 渲染模版，用于展示页面
+* private 保持私有函数的私有性
+* event 定义内部事件
+* listening 监听外部事件
+* public 定于暴露给外部的数据，适当的暴露一些函数，
+* return 返回public、target、event
+
+### ui库、javascript框架
+
+几个典型UI库、框架：[jqueryUI](http://jqueryui.com/demos/),[ligerui](http://www.ligerui.com/demo.html),[extjs](http://extjs.org.cn/),[Yahoo! UI Library (YUI)](http://developer.yahoo.com/yui/)、[Dojo](http://demos.dojotoolkit.org/demos/)、[Sencha(extjs)](http://extjs.org.cn/)
+
+### 模块化编程
+软件总体结构体现模块化思想，即把软件划分为一些独立命名的部件，每个部件称为一个模块，当把所有模块组装在一起的时候，便可获得问题的一个解。
+模块化以分治法为依据，但是否意味着我们把软件无限制的细分下去。事实上当分割过细，模块总数增多，每个模块的成本确实减少了，但模块接口所需代价随之增加。要确保模块的合理分割则须了解信息隐藏，内聚度及耦合度。
+
+* 信息隐藏
+
+	模块应设计的使其所包含的信息（过程和数据）对于那些不需要用到它的模块不可见。每个模块只完成一个独立的功能，然后提供该功能的接口。模块间通过接口访问。JavaScript中可以用函数去隐藏，封装，而后返回接口对象。如下是一个提供事件管理的模块event。
+
+	信息隐藏对于模块设计好处十分明显，它不仅支持模块的并行开发，而且还可减少测试或后期维护工作量。如日后要修改代码，模块的隐藏部分可随意更改，前提是接口不变。如事件模块开始实现时为了兼容旧版本IE及标准浏览器，写了很多IE Special代码，有一天旧版本IE消失了（猴年马月），只需从容删去即可。
+
+* 内聚度
+
+	内聚是来自结构化设计的一个概念，简单说内聚测量了单个模块内各个元素的联系程度。最不希望出现的内聚就是偶然性内聚，即将完全无关的抽象塞进同一个模块或类中。最希望出现的内聚是功能性内聚，即一个模块或类的各元素一同工作，提供某种清晰界定的行为。
+
+	内聚度指模块内部实现，它是信息隐藏和局部化概念的自然扩展，它标志着一个模块内部各成分彼此结合的紧密程度。好处也很明显，当把相关的任务分组后去阅读就容易多了。设计时应该尽可能的提高模块内聚度，从而获得较高的模块独立性。
+
+* 耦合度
+
+	耦合也是来自结构化设计，Stevens、Myers和Constantine将耦合定义为「一个模块与另一个模块之间建立起的关联强度的测量。强耦合使系统变得复杂，因为如果模块与其它模块高度相连，它就难以独立的被理解、变化和修正」
+
+	内聚度是指特定模块内部实现的一种度量，耦合度则是指模块之间的关联程度的度量。耦合度取决于模块之间接口的复杂性，进入或调用模块的位置等。与内聚度相反，在设计时应尽量追求松散耦合的系统。
+
+
+#### CommonJS
+CommonJS就是为JS的表现来制定规范，因为js没有模块的功能所以CommonJS应运而生，它希望js可以在任何地方运行，不只是浏览器中。NodeJS是这种规范的实现。
+
+* CommonJS定义的模块分为:{模块引用(require)} {模块定义(exports)} {模块标识(module)}
+	* require()用来引入外部模块；
+	* exports对象用于导出当前模块的方法或变量，唯一的导出口；
+	* module对象就代表模块本身。
+
+#### AMD(异步模块定义)
+它就主要为前端JS的表现制定规范。
+AMD就只有一个接口：define(id?,dependencies?,factory);
+它要在声明模块的时候制定所有的依赖(dep)，并且还要当做形参传到factory中,像这样：
+
+```js
+define(['dep1','dep2'],function(dep1,dep2){});
+```
+
+要是没什么依赖，就定义简单的模块，下面这样就可以啦：
+
+```
+define(function(){
+	var exports = {};
+	exports.method = function(){...};
+	return exports;
+});
+```
+
+RequireJS就是实现了AMD规范的呢。
+
+#### CMD
+seajs，就是遵循的CMD规范。与AMD蛮相近的，不过用起来更加方便些，最重要的是中文版
+```
+define(function(require,exports,module){...});
+```
+#### 总结
+JavaScript语言是弱结构性的，通过CommonJS定义一些规范，CMD和AMD得定义模块的方式对代码进行管理，使得更易维护；此外，NodeJS的诞生，对模块的规范定义，和包（npm）的概念的引入，让JS管理不再困难
+
+### MVC、MVVC
+Model–View–Controller (MVC)是一种把信息展现逻辑和用户交互分离的计算机用户界面开发模式；Model包含应用的数据和业务逻辑；Controller负责把用户的输入，转换为命令传递给Model和View。
+MVC给我们带来的好处:
+
+* 易于维护
+* 模型视图的解耦，意味着可以对业务逻辑更好的进行单元测试
+* 代码能够更好的重用
+* 模块化的开发能够使分工更加明确，一部分人专注业务逻辑，一部分人专注用户界面。
+
+#### Model
+Model管理应用的数据。当model数据发生改变的时候，会通知它的监听者【可能是view】，收到通知后，监听者会做相应的变化。
+
+#### View
+View是当前状态的model的视觉展现，view会观察模型的变化，当模型改变的时候被通知，同时允许view来更新自己。一般情况下我们会在view中使用模版引擎渲染model;
+
+#### Controllers
+Controllers是位于models和views的之间的调解人，它的工作是当model改变时来更新view和当用户操作view时来更新Model。
+
+#### Router[#!]
+担任了一部分Controller（控制器）的工作，它一般运行在单页应用中，能将特定的URL或锚点规则绑定到一个指定的方法（Action）。
+
+### Backbone[#](http://www.css88.com/doc/backbone/)
+Backbone的Model把服务器端的数据模型映射到浏览器端，绑定数据验证机制，并与相应的REST操作绑定，这样每个数据模型都变成了独立体，方便REST操作，却限制REST的灵活性。
+Backbone的Model没有与UI视图数据绑定，而是需要在View中自行操作DOM来更新或读取UI数据。
+
+### AngularJS[#](http://docs.angularjs.cn/api)
+Model直接与UI视图绑定，数据双向绑定。
+
+### Vue.js[#](http://cn.vuejs.org/guide/components.html)
+一个构建数据驱动的 web 界面的库。Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件。
+
+#### 对比其它框架[#](http://cn.vuejs.org/guide/comparison.html)
+
+## 拓展使用
+
+### Bower[#](http://bower.io/)
+一个客户端技术的软件包管理器，它可用于搜索、安装和卸载如JavaScript、HTML、CSS之类的网络资源。其他一些建立在Bower基础之上的开发工具，如YeoMan和Grunt，这个会在以后的文章中介绍。
+
+* 安装
+
+```bash
+npm install -g bower
+```
+
+* 自定义包的安装目录
+项目目录下 .bowerrc文件，是自定义bower下载的代码包的目录
+
+```json
+{
+  "directory" : "js/lib"
+}
+```
+
+* 初始化
+命令行进入项目目录中，输入命令如下：
+
+```bash
+bower init
+```
+
+会提示你输入一些基本信息，根据提示按回车或者空格即可，然后会生成一个bower.json文件，用来保存该项目的配置，如下：
+
+````json
+{
+  "name": "XXX",
+  "version": "0.0.1",
+  "authors": [
+
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
+
+````
+
+包的安装
+
+
+
+### Grunt[#](http://www.gruntjs.net/getting-started)
+对于需要反复重复的任务，例如压缩（minification）、编译、单元测试、linting等，自动化工具可以减轻你的劳动，简化你的工作。
+
+* 安装 CLI
+
+```bash
+npm install -g grunt-cli
+```
+上述命令执行完后，grunt 命令就被加入到你的系统路径中了，以后就可以在任何目录下执行此命令了。
+
+* 配置
+配置文件被命名为 Gruntfile.js 或 Gruntfile.coffee，用来配置或定义任务（task）并加载Grunt插件的。
+
+
+### gulp[#](http://www.gulpjs.com.cn/)
+一个自动化构建工具,开发者可以使用它在项目开发过程中自动执行常见任务。Gulp.js 是基于 Node.js 构建的,利用 Node.js 流的威力。
+
+1. 全局安装 gulp：
+
+```bash
+npm install --global gulp
+```
+
+2. 作为项目的开发依赖（devDependencies）安装：
+
+```bash
+npm install --save-dev gulp
+```
+
+3. 在项目根目录下创建一个名为 gulpfile.js 的文件：
+
+```js
+var gulp = require('gulp');
+
+gulp.task('default', function() {
+  // 将你的默认的任务代码放在这
+});
+```
+4. 运行 gulp：
+
+```bash
+gulp
+```
+
+### webpack
+webpack是一款模块加载器兼打包工具，它能把各种资源，例如JS（含JSX）、coffee、样式（含less/sass）、图片等都作为模块来使用和处理。
+
+* 其优势主要可以归类为如下几个：
+	* webpack 是以 commonJS 的形式来书写脚本滴，但对 AMD/CMD 的支持也很全面，方便旧项目进行代码迁移。
+	* 能被模块化的不仅仅是 JS 了。
+	* 开发便捷，能替代部分 grunt/gulp 的工作，比如打包、压缩混淆、图片转base64等。
+	* 扩展性强，插件机制完善，特别是支持 React 热插拔（见 react-hot-loader ）的功能让人眼前一亮。
+* 安装
+
+```bash
+ npm install webpack -g
+```
+
+* 配置
+
+每个项目下都必须配置有一个 webpack.config.js ，它的作用如同常规的 gulpfile.js/Gruntfile.js ，就是一个配置项，告诉 webpack 它需要做什么。
+
+### 函数库
+
+#### Underscore.js[#](http://underscorejs.org/)
+一个很精干的库，压缩后只有4KB。它提供了几十种函数式编程的方法，弥补了标准库的不足，大大方便了JavaScript的编程。MVC框架Backbone.js就将这个库作为自己的工具库。除了可以在浏览器环境使用，Underscore.js还可以用于Node.js。
+
+#### D3.js[#](http://d3js.org/)
+一个用于网页作图、生成互动图形的JavaScript函数库。它提供一个d3对象，所有方法都通过这个对象调用。
+
+
+
+
+
+
+
