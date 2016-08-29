@@ -3,7 +3,6 @@
 {% include blog/head.html %}
 <body>
 <div class="book with-summary">
-
   <div class="book-summary">
     <nav role="navigation" id="header-title">
 
@@ -36,6 +35,10 @@
       $('ul', $title).addClass("articles");
       $("#markdown-toc").remove();
       $("#header-title").append($title);
+      var ww = $(window).width();
+      if (ww < 720) {
+        $('body >div').removeClass('with-summary')
+      }
     } else {
       $('body >div').removeClass('with-summary')
       $('.fa-align-justify', '#header-blog').parent().remove()
@@ -55,6 +58,13 @@
       fixHeight();
     });
     fixHeight();
+
+    $('#header-title a').on('click', function () {
+      var ww = $(window).width();
+      if (ww < 720) {
+        $('body >div').removeClass('with-summary')
+      }
+    })
   })
 </script>
 </body>
