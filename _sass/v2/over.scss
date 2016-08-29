@@ -3,9 +3,7 @@
 }
 
 .postindex {
-  ul {
-    min-height: 90vh;
-  }
+  min-height: calc(100vh - 90px);
 }
 
 footer {
