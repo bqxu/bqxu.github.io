@@ -1,7 +1,8 @@
 ---
 layout: blog
 title: blog 重构
-summary: 准备开始对blog 进行重构整理
+summary: 对blog 进行重构整理
+tags: 日常
 ---
 
 # blog 重构

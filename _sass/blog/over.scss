@@ -8,26 +8,28 @@
   }
 }
 
-
-
 .book.color-theme-2 .book-header .btn {
   background: transparent;
   border: none;
 }
-
 
 .book.color-theme-1 .book-header .btn {
   background: transparent;
   border: none;
 }
 
-
-footer{
+footer {
   text-align: center;
   margin: 10px;
 }
 
+.page-inner {
+  min-height: calc(100vh - 110px);
+}
 
-.page-inner{
-  min-height: calc(100vh - 90px);
+footer.wrapper {
+  font-size: 10px;
+  span {
+    display: block;
+  }
 }

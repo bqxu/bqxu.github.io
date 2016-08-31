@@ -1,6 +1,7 @@
 ---
 layout: blog
 title: 使用 flowchart.js 支持 markdown 流程图
+tags: jekyll
 ---
 
 # markdown 流程图

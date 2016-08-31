@@ -25,7 +25,8 @@ layout: default
 
     {% for post in site.posts limit:5 %}
     <li class="post ">
-      <a href="{{post.url}}"><span>{{post.title}}</span>
+      <a href="{{post.url}}">
+        <span>{{post.title}}</span>
         <time datetime="{{post.date}}">{{post.date | date_to_string}}</time>
       </a>
     </li>

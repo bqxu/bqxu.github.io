@@ -1,6 +1,7 @@
 ---
 layout: blog
 title: css3 background 新特性实践
+tags: css css3
 ---
 
 # background

@@ -1,6 +1,7 @@
 ---
 layout: blog
 title:  css3基础知识transition过渡
+tags: css css3
 ---
 
 # css3 过渡

@@ -3,13 +3,15 @@ layout: default
 title: My Blog
 ---
 <style>
-  .postindex{
+  .postindex {
     min-height: 100vh;
 
   }
-  .postindex:after{
+
+  .postindex:after {
     clear: both;
   }
+
   .pagination {
     text-align: right;
   }
@@ -17,9 +19,11 @@ title: My Blog
 <section class="posts postindex wrapper">
   <ul>
     {% for post in paginator.posts %}
-    <li class="post ">
-      <a href="{{post.url}}"><span>{{post.title}}</span>
-        <time datetime="{{post.date}}">{{post.date | date_to_string}}</time>
+    <li class="post">
+      <time datetime="{{post.date}}">{{post.date | date: "%F" }}</time>
+      <a href="{{post.url}}">
+        <span>{{post.title}}</span>
+        <span class="category">{{ post.tags | join: ', ' }}</span>
       </a>
     </li>
     {% endfor %}
