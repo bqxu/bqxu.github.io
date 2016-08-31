@@ -169,13 +169,13 @@
 <script>
   var _hmt = _hmt || [];
   (function () {
-    var hm = document.createElement("script");
-    hm.src = "//hm.baidu.com/hm.js?7120378e7f75441b18a49acd0e969d19";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
+    if (window.location.href.indexOf('.0.0') == -1) {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7120378e7f75441b18a49acd0e969d19";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    }
   })();
-</script>
-<script>
   (function () {
     var bp = document.createElement('script');
     var curProtocol = window.location.protocol.split(':')[0];
