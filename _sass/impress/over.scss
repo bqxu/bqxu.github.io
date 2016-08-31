@@ -11,18 +11,14 @@
 
   .fallback-message {
     width: 90%;
+    position: absolute;
+    top: 10px;
   }
 
   .step {
     width: 100%;
     padding: 20px;
     display: none;
-  }
-
-  canvas{
-    display: none;
-    height: 0!important;
-    width: 0!important;
   }
 }
 
