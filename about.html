@@ -1,35 +1,259 @@
 ---
-layout: default
+layout: impress
 ---
-<section class="posts wrapper">
-  <article class="post ">
+<div class="fallback-message">
+  <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified
+    version of this presentation.</p>
+  <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+<!--
+    For example this fallback message is only visible when there is `impress-not-supported` class on body.
+-->
 
-    <header>
-      <div class="feature"><span>Featured</span><i class="fa fa-bookmark fa-lg"></i></div>
-      <h2>
+<div id="impress">
 
-      </h2>
-      <h1 id="posttitle">About</h1>
-    </header>
+  <div id="welcome" class="step" data-x="-3600" data-y="2000" data-scale="2">
+    <p>欢迎来到</p>
+    <p><span class="title">bqxu.me</span></p>
+  </div>
 
-    <section class="postbody">
+  <div id="me" class="step" data-x="-3600" data-y="1000" data-rotate="90">
+    我是谁?
 
-      <h2 id="section">关于我</h2>
+    <br>
+    一枚天蝎程序员!
 
-      <p>我从2013年开始工作
+  </div>
 
-      <p>喜欢阅读</p>
+  <div id="first" class="step" data-x="-2400" data-y="-600">
+    首先,我是一个"天蝎座"
+  </div>
 
-      <p>喜欢专研</p>
+  <div id="scorpio" class="step" data-x="-3600" data-y="-2000">
+    <p>
+      自尊心很强
+      <br>
+      努力使自己成为举足轻重的角色
+      <br>
+      有强劲的体力，以及丰富的构想，并具有管理自己的方法
+      <br>
+      极端主义执行者
+    </p>
+  </div>
 
-      <p>这是我的其他链接：</p>
+  <div id="next" class="step" data-x="400" data-y="1200" data-rotate="180">
+    然后,我才是一只"程序猿"
+  </div>
 
-      <ul>
-        <li><a href="http://github.com/bqxu">github</a></li>
-      </ul>
+  <div id="coder" class="step" data-x="2400" data-y="500" data-rotate="180">
 
-      <p>我的Email地址是bcaring@163.com。</p>
+    <p>
+      跑偏了的java工程师
+      <br>
+      半桶水的nodejs工程师
+      <br>
+      还可以的前端工程师
+      <br>
+      应该算是一枚全栈工程师
+    </p>
 
-    </section>
-  </article>
-</section>
+  </div>
+
+  <div id="world" class="step" data-x="0" data-y="-1600" data-rotate="-90">
+
+    <p>
+      好乱! 我到底干了什么?
+      <br>
+      好吧,让我反省一下。。。。
+    </p>
+  </div>
+
+  <div id="wisedu" class="step" data-x="1600" data-y="0" data-rotate="90">
+
+    <p>
+      2013年那年春天
+      <br>
+      经历了,求职难;
+      <br>
+      我加入了"金智教育",成为教学产品事业部的一份子。
+      <br>
+      <small> tips: 没听说过金智教育,你 out 了,
+        <br>
+        "金智教育"全称:江苏金智教育信息股份有限公司,
+        <br>
+        中国最大的教育信息化服务提供商, 不管你信不信,方正百度是这么说的。
+      </small>
+      <br>
+    </p>
+  </div>
+
+  <div id="lms" class="step" data-x="-1600" data-y="2000" data-rotate="90">
+
+    <br>
+    在教学产品事业部, 都在干 LMS (数字化学习平台)
+    <br>
+    练了1年多的java基本,
+    <br>
+    一直用着 spring + tiles + hibernate(不用HSQL,还是 sql 写着比较爽)
+    <br>
+    当然也会练练jquery,jquery Ui,
+    <br>
+    总体来说,还是小有成就的,前端 写了 好几个插件内部使用这,现在想来,还是有些野路子啊
+    <br>
+
+  </div>
+
+  <div id="cnmooc" class="step" data-x="1200" data-y="-2400" data-rotate="90">
+
+    <p>
+      后来,
+      <br>
+      终于发达啦,14年中旬。。。
+      <br>
+      跟着老大一起,进入了"好大学在线"项目。
+      <br>
+      什么是 "好大学在线" ?
+      <br>
+      www.cnmooc.com 中国高水平大学慕课联盟的官方网站
+      <br>
+      和大家一起奋斗着,前端,后端一起飞~~~
+      <br>
+      深度的springMVC 使用, 搞过HttpClient,服务器间通信
+      <br>
+      项目里面偷偷的用着 artTemplate。
+      <br>
+      <small>
+        tips: artTemplate ,一款 不错的 javascript 模版引擎
+      </small>
+    </p>
+  </div>
+
+  <div id="leave-wisedu" class="step" data-x="-1200" data-y="-1400" data-rotate="">
+    在2015年2月,默默的离开了 金智
+    <br>
+    世界那么大,我想去看看。
+  </div>
+
+  <div id="topFine" class="step" data-x="-3600" data-y="-400" data-rotate="90">
+
+    <p>
+      3月,我到了 "魔都" ,想想中的钱多事少离家近~~~
+      <br>
+      然而,我们还说要脚踏实地干事情的嘛。
+      <br>
+      我进入了 topFine
+      <br>
+      topFine? 一家低调奢华有内涵的公司,
+      <br>
+      主要服务于 工业企业中位列第一 (答案见百度)
+    </p>
+
+  </div>
+  <div id="angular" class="step" data-x="-2400" data-y="-150">
+
+    <p>
+      在 topfine 的日子里,
+      <br>
+      主要修炼 angular,
+      <br>
+      同时还是默默的用着springMVC
+    </p>
+
+  </div>
+  <div id="topFine-leave" class="step"
+       data-x="-1200" data-y="-2400"
+  >
+    <p>
+      默默的奋斗了半年,首都的小伙伴在召唤着我~~~
+      <br>
+      情非得已,离开了上海,去了首都
+    </p>
+  </div>
+
+  <div id="uniquedu" class="step" data-x="2500" data-y="-1300">
+    <p>
+      到了首都和小伙伴一起,开始干着和一起的事情,在线教育!
+      <br>
+      时代在进度,技术在发展,人也要不断学习啊。
+      <br>
+      title 变成了"前端工程师"
+      <br>
+      开始用seajs ,进行前端项目搭建。
+      <br>
+      得益于之前的锻炼。用gulp 把 artTemplate 和 seajs 结合在一起使用
+      <br>
+      同时和小伙伴们一起讨论着后台的框架,重在参与嘛
+    </p>
+  </div>
+
+  <div id="uniquedu-leave" class="step" data-x="2000" data-y="1600">
+
+    <p>
+      默默的干了三个月,
+      <br>
+      "事了拂衣去,深藏身与名"
+    </p>
+
+  </div>
+
+  <div id="syngentech" class="step" data-x="-1200" data-y="0" data-rotate="90">
+
+    <p>
+      15年秋,我进入一家创业公司,开始准备照着自己的想法进行战斗。
+      <br>
+      "合生基因" 一家有理想,有实力的公司。
+      <br>
+      在清华大学,研究生,博士的队伍里,开始了自己的战斗
+      <br>
+      完全转入了nodeJs 全栈的阵营
+    </p>
+
+  </div>
+
+  <div id="syngenvan" class="step" data-x="400" data-y="2200">
+
+    <p>
+      16年4月,开始 "<a href="http://www.syngenvan.com">合生前卫</a>" 项目
+      <br>
+      用着loopback 快速的搭建着api
+      <br>
+      用vue进行这高度的前度的组件话
+    </p>
+  </div>
+
+  <div id="now" class="step" data-x="-3000" data-y="-3000">
+
+    <p>
+      现在的我,在程序猿的不归路上,越走越远,
+    </p>
+
+  </div>
+
+
+  <div id="wish" class="step" data-x="1600" data-y="2400">
+
+    <p>
+      我希望,
+      <br>
+      不求尽善尽美,但求问心无愧。
+      <br>
+      写的了功能,出得了页面。
+      <br>
+      同时默默的装bigger
+    </p>
+
+
+  </div>
+
+  <div id="back" class="step" data-x="400" data-y="1600">
+    <p>谢谢您的来访</p>
+    <p>点击<a href="http://bqxu.me">这里</a>返回</p>
+  </div>
+
+  <!--<div id="overview" class="step" data-x="0" data-y="0" data-scale="10">-->
+  <!--</div>-->
+</div>
+
+<div class="hint">
+  <p>Use a spacebar or arrow keys to navigate</p>
+</div>
