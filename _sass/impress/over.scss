@@ -1,19 +1,31 @@
 .step {
   font-size: 32px;
+  color: #fff;
+  a{
+    background: transparent;
+    text-shadow: none;
+  }
 }
 
+.impress-not-supported {
 
-.impress-not-supported{
-
-  .fallback-message{
+  .fallback-message {
     width: 90%;
   }
 
-
-  .step{
+  .step {
     width: 100%;
     padding: 20px;
     display: none;
   }
 
+}
+
+#cnmooc, #lms ,#topFine,#uniquedu,#syngentech{
+  font-size: 26px;
+}
+
+
+#welcome{
+  font-size: 48px;
 }
