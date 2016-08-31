@@ -51,9 +51,9 @@ Vector.prototype = {
   },
   scale : function(factor) {
     this.x *= factor;
-    this.y *= factor;  
-    this.z *= factor;  
-    return this;      
+    this.y *= factor;
+    this.z *= factor;
+    return this;
   },
   magnitude : function () {
     return sqrt(sqr(this.x + this.y));
@@ -70,7 +70,7 @@ Vector.prototype = {
     return new Vector(this.x, this.y, this.z);
   },
   equals : function(another) {
-    return this.x === another.x 
+    return this.x === another.x
         && this.y === another.y
         && this.z === another.z;
   },
@@ -82,7 +82,7 @@ Vector.prototype = {
 };
 Vector.fromAngle = function (angle, magnitude) {
   return new Vector(
-    magnitude * cos(angle), 
+    magnitude * cos(angle),
     magnitude * sin(angle),
     magnitude * sin(angle));
 };
@@ -103,7 +103,7 @@ Particle.prototype.move = function () {
 Particle.prototype.reactToForces = function (fields) {
   var totalAccelerationX = 0;
   var totalAccelerationY = 0;
-  
+
   for (var i = 0; i < fields.length; i++) {
     var field = fields[i];
     var vectorX = field.pos.x - this.pos.x;
@@ -116,7 +116,7 @@ Particle.prototype.reactToForces = function (fields) {
     totalAccelerationY += vectorY * force;
   }
   this.ac = new Vector(totalAccelerationX, totalAccelerationY);
-  
+
   totalAccelerationX = 0;
   totalAccelerationY = 0;
   for (var i = 0; i < particles.length; i++) {
@@ -192,19 +192,19 @@ Particle.prototype.forceBetween = function(another, distance) {
 //This certainly doesn't *sub*mit to particles, that's for sure
 function ParticleEmitter(pos, vc, ang) {
   // to do config options for emitter - random, static, show emitter, emitter color, etc
-  this.pos = pos; 
-  this.vc = vc; 
-  this.ang = ang || 0.09; 
-  this.color = "#999"; 
+  this.pos = pos;
+  this.vc = vc;
+  this.ang = ang || 0.09;
+  this.color = "#999";
 }
 ParticleEmitter.prototype.emit = function() {
-  var angle = this.vc.angle() + 
+  var angle = this.vc.angle() +
       this.ang - (Math.random() * this.ang * 2);
   var magnitude = this.vc.magnitude();
   var position = this.pos.clone();
         position.add(
         new Vector(
-          ~~((Math.random() * 100) - 50) * drawScale,       
+          ~~((Math.random() * 100) - 50) * drawScale,
           ~~((Math.random() * 100) - 50) * drawScale
         ));
   var velocity = Vector.fromAngle(angle, magnitude);
@@ -246,44 +246,44 @@ var renderToCanvas = function (width, height, renderFunction) {
     return buffer;
 };
 
-maxParticles = 500; 
-emissionRate = 1; 
+maxParticles = 100;
+emissionRate = 1;
 drawScale = 1.3;
 minParticleSize = 2;
 emitters = [
   //br
   new ParticleEmitter(
     new Vector(
-      canvasWidth / 2 * drawScale + 400, 
+      canvasWidth / 2 * drawScale + 400,
       canvasHeight / 2 * drawScale
-      ), 
+      ),
     Vector.fromAngle(2, 5),
     1
   ),
   //   // bl
   //   new ParticleEmitter(
   //   new Vector(
-  //     canvasWidth / 2 * drawScale - 400, 
+  //     canvasWidth / 2 * drawScale - 400,
   //     canvasHeight / 2 * drawScale + 400
-  //     ), 
+  //     ),
   //   Vector.fromAngle(1.5, 1),
   //   1
   // ),
     // tl
   new ParticleEmitter(
     new Vector(
-      canvasWidth / 2 * drawScale - 400, 
+      canvasWidth / 2 * drawScale - 400,
       canvasHeight / 2 * drawScale
-      ), 
+      ),
     Vector.fromAngle(5, 5),
     1
   ),
   //   // tr
   //   new ParticleEmitter(
   //   new Vector(
-  //     canvasWidth / 2 * drawScale + 400, 
+  //     canvasWidth / 2 * drawScale + 400,
   //     canvasHeight / 2 * drawScale - 400
-  //     ), 
+  //     ),
   //   Vector.fromAngle(4.5, 1),
   //   1
   // )
@@ -300,11 +300,11 @@ function loop() {
   draw();
   queue();
 }
- 
+
 function clear() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
-    
+
 var ctr = 0;
 var c = [
   'rgba(255,255,255,',
@@ -323,7 +323,7 @@ function addNewParticles() {
       for (var j = 0; j < emissionRate; j++) {
         var p = emitters[i].emit();
         p.color = ( ctr % 10 === 0 )
-          ? ( Math.random() * 5 <= 1 ? c2 : rndc() ) 
+          ? ( Math.random() * 5 <= 1 ? c2 : rndc() )
           : rndc();
         p.mass = ~~(Math.random() * 5);
         particles.push(p);
@@ -339,7 +339,7 @@ function addNewParticles() {
       collidedMass = collidedMass<0 ? 0 :collidedMass;
     }
   }
-  if (particles.length > maxParticles) 
+  if (particles.length > maxParticles)
     return;
   _emit();
 }
@@ -353,17 +353,17 @@ function isPositionAliveAndAdjust(particle,check) {
   var pos = particle.pos;
   if(!check) check = BUFFEROFFSCREEN;
   if(check === CLIPOFFSCREEN) {
-    return !(!particle.alive || 
-             pos.x < 0 || 
-             (pos.x / drawScale) > boundsX || 
-             pos.y < 0 || 
+    return !(!particle.alive ||
+             pos.x < 0 ||
+             (pos.x / drawScale) > boundsX ||
+             pos.y < 0 ||
              (pos.y / drawScale) > boundsY);
   } else if(check === BUFFEROFFSCREEN) {
-    return !(!particle.alive || 
-             pos.x < -boundsX * drawScale || 
-             pos.x > 2 * boundsX * drawScale || 
-             pos.y < -boundsY * drawScale || 
-             pos.y > 2 * boundsY * drawScale);      
+    return !(!particle.alive ||
+             pos.x < -boundsX * drawScale ||
+             pos.x > 2 * boundsX * drawScale ||
+             pos.y < -boundsY * drawScale ||
+             pos.y > 2 * boundsY * drawScale);
   } else if(check === LOOPSCREEN) {
     if (pos.x < 0) pos.x = boundsX * drawScale;
     if ((pos.x / drawScale) > boundsX) pos.x = 0;
@@ -390,7 +390,7 @@ function renderParticle(p) {
     var position = p.pos;
     if(!p.size) p.size = Math.floor(p.mass / 100);
 
-    
+
     if(!p.opacity) p.opacity = 0.05;
     if(p.velocity > 0) {
       if(p.opacity<=0.18)
@@ -435,15 +435,15 @@ function renderParticle(p) {
           f = fills[f];
           ofsContext.fillStyle = p.color + f.opacity + ')';
           ofsContext.arc(
-            actualSize * 16, 
-            actualSize * 16, 
-            f.size , 0, Math.PI*2, true); 
+            actualSize * 16,
+            actualSize * 16,
+            f.size , 0, Math.PI*2, true);
           ofsContext.fill();
         }
         ofsContext.closePath();
       });
-      offscreenCache[cacheKey] = cacheValue;    
-    } 
+      offscreenCache[cacheKey] = cacheValue;
+    }
       var posX = p.pos.x / drawScale;
     var posY = p.pos.y / drawScale;
     ctx.drawImage(cacheValue, posX, posY);
@@ -459,28 +459,28 @@ function renderScene(ofsContext) {
     var p = forces[i];
     var position = p.pos;
     var opacity = 1;
-    
+
     ofsContext.beginPath();
     for(var f in fills) {
       f = fills[f];
       var o = p.burp === true ? 1 : f.opacity;
       p.burp = false;
       // ofsContext.fillStyle = 'rgba(255,255,255,' + o + ')';
-      // ofsContext.arc(position.x / drawScale, 
-      //   position.y / drawScale, 
-      //   f.size / drawScale, 0, Math.PI*2, true); 
+      // ofsContext.arc(position.x / drawScale,
+      //   position.y / drawScale,
+      //   f.size / drawScale, 0, Math.PI*2, true);
       // ofsContext.fill();
     }
     ofsContext.closePath();
   }
-  
+
   for (var i = 0; i < particles.length; i++) {
     var p = particles[i];
     renderParticle(p);
   }
 }
 
-function draw() { 
+function draw() {
   renderScene(ctx);
 }
 
@@ -488,7 +488,7 @@ function update() {
   addNewParticles();
   plotParticles(canvas.width, canvas.height);
 }
- 
+
 function queue() {
   window.requestAnimationFrame(loop);
 }
