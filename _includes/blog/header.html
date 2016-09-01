@@ -30,6 +30,9 @@
     <i class="fa fa-circle-o-notch fa-spin"></i>
     <a href="javascript:void(0)" id="header-title">{{page.title}}</a>
   </h1>
+  <div id="font-tips">
+    点击左上角"<i class="fa fa-font"></i>"可进行阅读主题设置
+  </div>
 </div>
 
 <script>
@@ -128,16 +131,27 @@
       localStorage.setItem('color-theme', "color-theme-2");
     });
 
+    var i = 0;
     if (localStorage.getItem('color-theme')) {
       $('body >div').addClass(localStorage.getItem('color-theme'));
+      i++;
     }
     if (localStorage.getItem('font-family')) {
       $('body >div').addClass(localStorage.getItem('font-family'));
+      i++;
     }
     if (localStorage.getItem('font-size')) {
       $('body >div').addClass(localStorage.getItem('font-size'));
-    }else{
+      i++;
+    } else {
       $('body >div').addClass('font-size-1');
+    }
+
+    if (i == 0) {
+      $("#font-tips").show();
+      setTimeout(function () {
+//        $("#font-tips").hide(500);
+      }, 2000)
     }
   })
 
