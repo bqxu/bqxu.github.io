@@ -42,7 +42,20 @@ footer.wrapper {
   display: none;
 }
 
-#header-blog{
+#header-blog {
   min-height: 50px;
   height: auto;
 }
+
+.book-summary ul.summary li :not(:first-child) {
+  a:not(:only-child) {
+    display: inline;
+  }
+}
+
+.book-summary ul.summary li:first-child {
+  a + a {
+    display: none;
+  }
+}
+

@@ -52,6 +52,15 @@
         }
       }
     });
+    $("#header-title a").each(function (i, n) {
+      var $this = $(n);
+      if ($this.attr("href")) {
+        var href = $this.attr("href");
+        if (href.indexOf("://") > -1) {
+          $this.attr("target", "_blank");
+        }
+      }
+    });
     var fixHeight = function () {
     };
     $(window).on("resize", function () {
