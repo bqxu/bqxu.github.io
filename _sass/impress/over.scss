@@ -7,9 +7,16 @@
   }
 }
 
+.fallback-message{
+  display: none;
+}
+
+
+
 .impress-not-supported {
 
   .fallback-message {
+    display: block;
     width: 90%;
     position: absolute;
     top: 10px;
