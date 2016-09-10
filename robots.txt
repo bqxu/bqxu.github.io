@@ -1,6 +1,8 @@
 # robots.txt
 User-agent: *
-Disallow:
+Disallow: /assets/
+Disallow: /stylesheets/
+Disallow: /css/
 
 
 Sitemap: http://bqxu.me/sitemap.xml
