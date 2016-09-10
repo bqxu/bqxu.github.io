@@ -37,13 +37,22 @@
     var contentDocument = contentWindow.document;
     var desc_link = contentDocument.getElementsByClassName('desc_link');
     var link_view = contentDocument.getElementsByClassName('link_view');
+    var bottom_logo = contentDocument.getElementsByClassName('bottom_logo');
     if (desc_link && desc_link[0]) {
       desc_link = desc_link[0];
       desc_link.innerHTML = '回到 首页';
       desc_link.href = 'javascript:clickBack()';
       if (link_view && link_view[0]) {
         link_view = link_view[0];
-        link_view.setAttribute('target','_blank') ;
+        link_view.setAttribute('target', '_blank');
+      }
+      if (bottom_logo) {
+        bottom_logo = bottom_logo[0];
+        var alist = bottom_logo.querySelectorAll('.bottom_logo a');
+        for (var key in alist) {
+          var a = alist[key];
+          a.setAttribute && a.setAttribute('target', '_blank');
+        }
       }
       contentWindow.clickBack = function () {
         window.location.href = 'http://bqxu.me';
