@@ -1,5 +1,6 @@
 # robots.txt
-User-agent: Baiduspider
+User-agent: *
 Disallow:
-User-agent: Googlebot
-Disallow:
+
+
+Sitemap: http://bqxu.me/sitemap.xml
