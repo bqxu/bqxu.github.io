@@ -1,0 +1,32 @@
+---
+layout: default-no-push
+title: bqxu's Article
+permalink: article/
+---
+<style>
+  .postindex {
+    min-height: 100vh;
+
+  }
+
+  .postindex:after {
+    clear: both;
+  }
+
+  .pagination {
+    text-align: right;
+  }
+</style>
+<section class="posts postindex wrapper">
+  <ul>
+    {% for post in site['article'] %}
+    <li class="post">
+      <time datetime="{{post.date}}">{{post.date | date: "%F" }}</time>
+      <a href="{{post.url}}">
+        <span>{{post.title}}</span>
+        <span class="category">{{ post.tags | join: ', ' }}</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

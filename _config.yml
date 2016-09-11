@@ -29,8 +29,11 @@ gist:
 
 collections:
   posts:
-    output: rue
-
+    permalink: /blog/:year/:month/:day/:title.html
+    output: true
+  article:
+    permalink: /article/:year/:month/:day/:title.html
+    output: true
 
 
 # Filtering Content
