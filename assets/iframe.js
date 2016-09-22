@@ -12,7 +12,7 @@ $(function() {
     var _uuid = uuid();
     var div = $('<div id="div_' + _uuid + '"></div>');
     frameObj.after(div);
-    div.append($('<a class="look-source" id="' + _uuid + '" href="javascript:void(0)">source</a>'));
+    div.append($('<a class="look-source" id="' + _uuid + '" href="javascript:void(0)">查看源码</a>'));
     var pre = $('<pre id="pre_' + _uuid + '" style="display: none;"></pre>');
     div.append(pre);
     $.ajax({
