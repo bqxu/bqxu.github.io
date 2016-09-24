@@ -131,31 +131,27 @@
       localStorage.setItem('color-theme', "color-theme-2");
     });
 
-    var i = 0;
     if (localStorage.getItem('color-theme')) {
       $('body >div').addClass(localStorage.getItem('color-theme'));
-      i++;
     }
     if (localStorage.getItem('font-family')) {
       $('body >div').addClass(localStorage.getItem('font-family'));
-      i++;
     }
     if (localStorage.getItem('font-size')) {
       $('body >div').addClass(localStorage.getItem('font-size'));
-      i++;
     } else {
       $('body >div').addClass('font-size-1');
     }
 
-    if (i == 0) {
+    if (localStorage.length == 0) {
       $("#font-tips").show();
       setTimeout(function () {
         $("#font-tips").hide(500);
       }, 2000)
     }
-  })
+  });
 
-  window.onerror=function (err) {
+  window.onerror = function (err) {
     alert(err);
   }
 

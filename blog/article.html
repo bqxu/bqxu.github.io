@@ -19,7 +19,10 @@ permalink: article/
 </style>
 <section class="posts postindex wrapper">
   <ul>
-    {% for post in site['article'] %}
+
+    {% assign articleList = site['article'] | reverse %}
+
+    {% for post in articleList %}
     <li class="post">
       <time datetime="{{post.date}}">{{post.date | date: "%F" }}</time>
       <a href="{{post.url}}">

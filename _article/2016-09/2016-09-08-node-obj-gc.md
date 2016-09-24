@@ -1,10 +1,10 @@
 ---
-layout: blog
-title: NodeJS 的内存管理和垃圾回收机制
+layout: blog-no-push
+title: javascript 的内存管理和垃圾回收机制
 tags: nodejs
 ---
 
-#  NodeJS 的内存管理和垃圾回收机制
+#  javascript 的内存管理和垃圾回收机制
 
 
 * TOC
