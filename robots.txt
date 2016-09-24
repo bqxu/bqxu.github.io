@@ -3,6 +3,7 @@ User-agent: *
 Disallow: /assets/
 Disallow: /stylesheets/
 Disallow: /css/
+Disallow: /article/
 
 
 Sitemap: http://bqxu.me/sitemap.xml
