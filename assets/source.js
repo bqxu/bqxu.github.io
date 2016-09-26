@@ -7,9 +7,14 @@ $(function () {
     if (sourceObj.attr('frame-flag') == 'compiled') {
       return
     }
+    var defShow = sourceObj.attr('source-display');
+
     var src = sourceObj.attr('source-href');
     var _uuid = uuid();
-    var pre = $('<pre id="pre_' + _uuid + '" style="display: none;"></pre>');
+    var pre = $('<pre id="pre_' + _uuid + '"></pre>');
+    if (defShow != 'show') {
+      pre.hide();
+    }
     sourceObj.after(pre);
     $.ajax({
       url: src,
