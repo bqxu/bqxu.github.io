@@ -1,6 +1,6 @@
 ---
 layout: blog-no-push
-title: 创业公司
+title: 创业公司的经
 tags: 日常
 ---
 
