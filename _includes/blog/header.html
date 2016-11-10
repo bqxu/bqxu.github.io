@@ -1,44 +1,50 @@
 <div class="book-header" role="navigation" id="header-blog">
-  <a class="btn pull-left js-toolbar-action" href="javascript:void(0)"
-  >
-    <i class="fa fa-align-justify"></i>
-  </a>
-  <div class="dropdown pull-left font-settings js-toolbar-action">
-    <a class="btn toggle-dropdown"
-       href="javascript:void(0)">
-      <i class="fa fa-font"></i>
-    </a>
-    <div class="dropdown-menu dropdown-right">
-      <div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div>
-      <div class="buttons">
-        <button class="button size-2 font-reduce">A</button>
-        <button class="button size-2 font-enlarge">A</button>
-      </div>
-      <div class="buttons">
-        <button class="button size-2 font-family-0">Serif</button>
-        <button class="button size-2 font-family-1">Sans</button>
-      </div>
-      <div class="buttons">
-        <button class="button size-3 color-theme-0">White</button>
-        <button class="button size-3 color-theme-1">Sepia</button>
-        <button class="button size-3 color-theme-2">Night</button>
-      </div>
-    </div>
-  </div>
-  <a class="btn pull-right lang-switcher active js-toolbar-action" aria-label="" href="/">bqxu.me</a>
-  <h1>
-    <i class="fa fa-circle-o-notch fa-spin"></i>
-    <a href="javascript:void(0)" id="header-title">{{page.title}}</a>
-  </h1>
-  <div id="font-tips">
-    点击左上角"<i class="fa fa-font"></i>"可进行阅读主题设置
-  </div>
+
 </div>
 
 <script>
 
+  var header = [];
+  header.push('<div>');
+  header.push('<a class="btn pull-left js-toolbar-action" href="javascript:void(0)"');
+  header.push('  >');
+  header.push('  <i class="fa fa-align-justify"></i>');
+  header.push('  </a>');
+  header.push('  <div class="dropdown pull-left font-settings js-toolbar-action">');
+  header.push('  <a class="btn toggle-dropdown"');
+  header.push('href="javascript:void(0)">');
+  header.push('  <i class="fa fa-font"></i>');
+  header.push('  </a>');
+  header.push('  <div class="dropdown-menu dropdown-right">');
+  header.push('  <div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div>');
+  header.push('  <div class="buttons">');
+  header.push('  <button class="button size-2 font-reduce">A</button>');
+  header.push('  <button class="button size-2 font-enlarge">A</button>');
+  header.push('  </div>');
+  header.push('  <div class="buttons">');
+  header.push('  <button class="button size-2 font-family-0">Serif</button>');
+  header.push('  <button class="button size-2 font-family-1">Sans</button>');
+  header.push('  </div>');
+  header.push('  <div class="buttons">');
+  header.push('  <button class="button size-3 color-theme-0">White</button>');
+  header.push('  <button class="button size-3 color-theme-1">Sepia</button>');
+  header.push('  <button class="button size-3 color-theme-2">Night</button>');
+  header.push('  </div>');
+  header.push('  </div>');
+  header.push('  </div>');
+  header.push('  <a class="btn pull-right lang-switcher active js-toolbar-action" aria-label="" href="/">bqxu.me</a>');
+  header.push('  <h1>');
+  header.push('  <i class="fa fa-circle-o-notch fa-spin"></i>');
+  header.push('  <a href="javascript:void(0)" id="header-title">{{page.title}}</a>');
+  header.push('</h1>');
+  header.push('<div id="font-tips">');
+  header.push('  点击左上角"<i class="fa fa-font"></i>"可进行阅读主题设置');
+  header.push('</div>');
+  header.push('</div>');
+
   $(function () {
     var $header = $('#header-blog');
+    $header.html(header.join(''));
     $('.fa-align-justify', $header).parent().on('click', function () {
       $('body >div').toggleClass('with-summary')
     });
